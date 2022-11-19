@@ -11,18 +11,18 @@ namespace RumoAoHexaApp.Services
         {
             _jsRuntime = jsRuntime;
         }
-        public async Task Pause()
+        public async Task PauseAsync()
         {
             await _jsRuntime.InvokeVoidAsync("soundService.pauseAll");
         }
 
-        public async Task Pause(string id)
+        public async Task PauseAsync(string id)
         {
             await _jsRuntime.InvokeVoidAsync("soundService.pauseById", id);
         }
 
 
-        public async Task Play(string id)
+        public async Task PlayAsync(string id)
         {
             await _jsRuntime.InvokeVoidAsync("soundService.playSound", id);
         }

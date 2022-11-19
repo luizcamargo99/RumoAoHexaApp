@@ -5,7 +5,7 @@
     {
         <div class="item">
             <h1>@sound.DisplayName</h1>
-            <MainButton AudioName="@sound.FileName" IsActive="@sound.Active" OnClick="async()=> { await PlaySoundAsync(sound); }" />
+            <MainButton IsActive="@sound.Active" OnClick="async()=> { await PlaySoundAsync(sound); }" />
             <audio id="@sound.FileName" src="@($"/sounds/{sound.FileName}.mp3")" class="audios" />
         </div>
     }
@@ -14,9 +14,17 @@
 @code {
     private List<Sound> _sounds { get; set; } = new()
     {
+        new Sound() { DisplayName = "VUVUZELA 01", FileName = "vuvuzela_1",  DurationInSeconds = 13  },
+        new Sound() { DisplayName = "VUVUZELA 02", FileName = "vuvuzela_2",  DurationInSeconds = 5  },
+        new Sound() { DisplayName = "VUVUZELA 03", FileName = "vuvuzela_3",  DurationInSeconds = 30  },
         new Sound() { DisplayName = "BRASIL SIL SIL SIL (CLÁSSICO)", FileName = "brasil_sil_sil_classico",  DurationInSeconds = 13  },
         new Sound() { DisplayName = "BRASIL SIL SIL SIL (2022)", FileName = "brasil_sil_sil_2022",  DurationInSeconds = 27 },
         new Sound() { DisplayName = "ACABOU! É TETRA!! ", FileName = "e_tetra", DurationInSeconds = 10 },
+        new Sound() { DisplayName = "OLHA O GOL! OLHA O GOL!", FileName = "olha_o_gol", DurationInSeconds = 28 },
+        new Sound() { DisplayName = "OLHO NO LANCE", FileName = "olho_no_lance", DurationInSeconds = 5 },
+        new Sound() { DisplayName = "BATE PRO GOL NEYMAR!", FileName = "bate_pro_gol_neymar", DurationInSeconds = 10 },
+        new Sound() { DisplayName = "58 FOI PELÉ - MÚSICA DO HEXA", FileName = "musica_do_hexa", DurationInSeconds = 53 },
+        new Sound() { DisplayName = "HINO NACIONAL", FileName = "hino_nacional", DurationInSeconds = 100 },
     };
 
     private async Task PlaySoundAsync(Sound sound)
@@ -34,8 +42,8 @@
 
         sound.Active = !sound.Active;
         await InvokeAsync(StateHasChanged);
-        await soundService.Pause();
-        await soundService.Play(sound.FileName);
+        await soundService.PauseAsync();
+        await soundService.PlayAsync(sound.FileName);
 
         var taskPlayed = Task.Delay(sound.DurationInSeconds * 1000).ContinueWith(async (x) =>
         {
@@ -55,7 +63,7 @@
 
     private async Task PauseActiveSoundAsync(Sound sound)
     {
-        await soundService.Pause(sound.FileName);
+        await soundService.PauseAsync(sound.FileName);
         sound.Active = !sound.Active;
         await InvokeAsync(StateHasChanged);
     }

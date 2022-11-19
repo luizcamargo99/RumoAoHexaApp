@@ -2,8 +2,8 @@
 {
     internal interface ISoundService
     {
-        Task Pause();
-        Task Pause(string id);
-        Task Play(string id);
+        Task PauseAsync();
+        Task PauseAsync(string id);
+        Task PlayAsync(string id);
     }
 }

@@ -13,7 +13,7 @@
         <EnableDefaultCssItems>true</EnableDefaultCssItems>
 
         <!-- Display name -->
-        <ApplicationTitle>RumoAoHexaApp</ApplicationTitle>
+        <ApplicationTitle>Rumo ao Hexa</ApplicationTitle>
 
         <!-- App Identifier -->
         <ApplicationId>com.companyname.rumoaohexaapp</ApplicationId>
@@ -31,12 +31,22 @@
         <SupportedOSPlatformVersion Condition="$([MSBuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'tizen'">6.5</SupportedOSPlatformVersion>
     </PropertyGroup>
 
+	<PropertyGroup Condition="$(TargetFramework.Contains('-android')) and '$(Configuration)' == 'Release'">
+		<AndroidKeyStore>True</AndroidKeyStore>
+		<AndroidSigningKeyStore>key.keystore</AndroidSigningKeyStore>
+		<AndroidSigningKeyAlias>RumoAoHexaApp</AndroidSigningKeyAlias>
+		<AndroidSigningKeyPass></AndroidSigningKeyPass>
+		<AndroidSigningStorePass></AndroidSigningStorePass>
+	</PropertyGroup>
+	
     <ItemGroup>
         <!-- App Icon -->
-        <MauiIcon Include="Resources\AppIcon\appicon.svg" ForegroundFile="Resources\AppIcon\appiconfg.svg" Color="#512BD4" />
+        <!--<MauiIcon Include="Resources\AppIcon\icon.png"  Color="transparent" />-->
+		<MauiIcon Include="Resources\AppIcon\appicon.png" ForegroundFile="Resources\AppIcon\icon.png" Color="#009C37" />
 
         <!-- Splash Screen -->
-        <MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#512BD4" BaseSize="128,128" />
+        <!--<MauiSplashScreen Include="Resources\Splash\splash.svg" Color="#30A65C" BaseSize="128,128" />-->
+        <MauiSplashScreen Include="Resources\Splash\splash_cbf.svg" Color="#F1D400" BaseSize="128,128" />
 
         <!-- Images -->
         <MauiImage Include="Resources\Images\*" />
@@ -55,6 +65,11 @@
     </ItemGroup>
 
     <ItemGroup>
+      <None Remove="Resources\AppIcon\icon.png" />
+      <None Remove="Resources\Splash\splash_hexa.svg" />
+    </ItemGroup>
+
+    <ItemGroup>
       <Content Include="Components\MainButton.razor.css" />
       <Content Include="Pages\Index.razor.css" />
     </ItemGroup>
@@ -65,6 +80,10 @@
 
     <ItemGroup>
       <Folder Include="wwwroot\sounds\" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <MauiIcon Include="Resources\AppIcon\icon.png" />
     </ItemGroup>
 
 </Project>
