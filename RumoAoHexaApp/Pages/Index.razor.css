@@ -1,0 +1,26 @@
+﻿.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.item {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+    .item h1 {
+        font-size: 1rem;
+        font-weight: bold;
+        background: #30A65C;
+        padding: .5rem 1rem;
+        color: #fff;
+        border-radius: 1.5rem;
+    }

@@ -1,0 +1,15 @@
+﻿<a class="btn b-1" tabindex="0" @onclick="OnClick">
+    <img src="@(IsActive ? "images/pause.png" : "images/play.png" )" />
+</a>
+
+
+@code {
+    [Parameter]
+    public string AudioName { get; set; }
+
+    [Parameter]
+    public Action OnClick { get; set; }
+
+    [Parameter]
+    public bool IsActive { get; set; }
+}

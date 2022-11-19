@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>RumoAoHexaApp</title>
+    <base href="/" />
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css" />
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="RumoAoHexaApp.styles.css" rel="stylesheet" />
+</head>
+
+<body>
+
+    <div class="status-bar-safe-area"></div>
+
+    <div id="app"></div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="_framework/blazor.webview.js" autostart="false"></script>
+    <script>
+        window.soundService =
+        {
+            pauseAll: function () {
+                let elements = document.getElementsByClassName("audios");
+                for (var i = 0; i < elements.length; i++) {
+                    let element = elements[i];
+                    element.currentTime = 0;
+                    element.pause();
+                }
+            },
+            pauseById: function (id) {
+                const element = document.getElementById(id);
+                element.currentTime = 0;
+                element.pause();
+            },
+            playSound: function (id) {
+                const element = document.getElementById(id);
+                element.play();
+            }
+        };
+    </script>
+</body>
+
+</html>

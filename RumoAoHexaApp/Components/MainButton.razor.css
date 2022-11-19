@@ -1,0 +1,33 @@
+﻿
+.btn {
+    display: flex;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    color: #383a59;
+    font-family: "Montserrat", sans-serif;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin: 1rem;
+    padding: 0.5rem;
+    border: 2px solid #383a59;
+    border-radius: 100rem;
+    position: relative;
+    top: 0;
+    background: #30A65C;
+    width: 8rem;
+    height: 8rem;
+    box-shadow: 0 0.6em #002570, 0 0.9em rgba(0, 0, 0, 0.4);
+}
+
+    .btn:active {
+        -webkit-animation: pressAnimation .05s forwards;
+        animation: pressAnimation .05s forwards;
+    }
+
+@keyframes pressAnimation {
+    100% {
+        box-shadow: 0 0 #002570, 0 0.3em rgba(0, 0, 0, 0.4);
+        transform: translateY(4px);
+    }
+}
