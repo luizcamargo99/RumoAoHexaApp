@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using RumoAoHexaApp.Data;
-using RumoAoHexaApp.Interfaces;
-using RumoAoHexaApp.Services;
+using Plugin.Maui.Audio;
 
 namespace RumoAoHexaApp;
 
@@ -24,7 +22,7 @@ public static class MauiProgram
 		builder.Logging.AddDebug();
 #endif
 
-		builder.Services.AddScoped<ISoundService, SoundService>();
+		builder.Services.AddSingleton(AudioManager.Current);
 
 		return builder.Build();
 	}

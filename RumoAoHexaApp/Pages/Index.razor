@@ -1,12 +1,12 @@
 ﻿@page "/"
 
 <div class="main-content">
+
     @foreach (var sound in _sounds)
     {
         <div class="item">
             <h1>@sound.DisplayName</h1>
             <MainButton IsActive="@sound.Active" OnClick="async()=> { await PlaySoundAsync(sound); }" />
-            <audio id="@sound.FileName" src="@($"/sounds/{sound.FileName}")" class="audios" onended="@(() => { SoundEnded(sound); })" />
         </div>
     }
 </div>
@@ -29,33 +29,43 @@
 
     private async Task PlaySoundAsync(Sound sound)
     {
+        if (sound.Player is null)
+            sound.Player = await CreatePlayerAsync(sound.FileName);
+
         if (sound.Active)
         {
-            await PauseActiveSoundAsync(sound);
+            await StopSoundAsync(sound);
             return;
         }
 
         var soundActive = _sounds.FirstOrDefault(x => x.Active);
 
         if (soundActive is not null)
-            await PauseActiveSoundAsync(soundActive);
+            await StopSoundAsync(soundActive);
 
         sound.Active = !sound.Active;
+        sound.Player.Play();
+        sound.Player.PlaybackEnded += SoundEnded;
         await InvokeAsync(StateHasChanged);
-        await soundService.PauseAsync();
-        await soundService.PlayAsync(sound.FileName);
     }
 
-    private void SoundEnded(Sound sound)
+    private async Task<IAudioPlayer> CreatePlayerAsync(string fileName)
     {
-        sound.Active = false;
+        return soundManager.CreatePlayer(await FileSystem.OpenAppPackageFileAsync(fileName));
+    }
+
+    private async Task StopSoundAsync(Sound sound)
+    {
+        sound.Player.Stop();
+        sound.Player.Dispose();
+        sound.Player = null;
+        await InvokeAsync(StateHasChanged);
+    }
+
+    private void SoundEnded(object sender, EventArgs args)
+    {
+        var soundActive = _sounds.FirstOrDefault(x => x.Active);
+        soundActive.Active = false;
         StateHasChanged();
-    }
-
-    private async Task PauseActiveSoundAsync(Sound sound)
-    {
-        await soundService.PauseAsync(sound.FileName);
-        sound.Active = !sound.Active;
-        await InvokeAsync(StateHasChanged);
     }
 }

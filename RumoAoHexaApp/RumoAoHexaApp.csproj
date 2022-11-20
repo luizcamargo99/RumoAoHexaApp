@@ -58,6 +58,10 @@
         <!-- Raw Assets (also remove the "Resources\Raw" prefix) -->
         <MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
     </ItemGroup>
+	
+    <ItemGroup>
+      <MauiAsset Remove="Resources\Raw\bate_pro_gol_neymar.mp3" />
+    </ItemGroup>
 
     <ItemGroup>
       <MauiCss Remove="Components\MainButton.razor.css" />
@@ -66,24 +70,80 @@
 
     <ItemGroup>
       <None Remove="Resources\AppIcon\icon.png" />
+      <None Remove="Resources\Raw\bate_pro_gol_neymar.mp3" />
+      <None Remove="Resources\Raw\bate_pro_gol_neymar.wav" />
+      <None Remove="Resources\Raw\brasil_sil_sil_2022.mp3" />
+      <None Remove="Resources\Raw\brasil_sil_sil_classico.mp3" />
+      <None Remove="Resources\Raw\e_tetra.mp3" />
+      <None Remove="Resources\Raw\hino_nacional.mp3" />
+      <None Remove="Resources\Raw\musica_do_hexa.mp3" />
+      <None Remove="Resources\Raw\olha_o_gol.mp3" />
+      <None Remove="Resources\Raw\olho_no_lance.mp3" />
+      <None Remove="Resources\Raw\vuvuzela_1.mp3" />
+      <None Remove="Resources\Raw\vuvuzela_2.mp3" />
+      <None Remove="Resources\Raw\vuvuzela_3.mp3" />
       <None Remove="Resources\Splash\splash_hexa.svg" />
     </ItemGroup>
 
     <ItemGroup>
       <Content Include="Components\MainButton.razor.css" />
       <Content Include="Pages\Index.razor.css" />
+      <Content Include="Resources\Raw\bate_pro_gol_neymar.mp3">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </Content>
     </ItemGroup>
 
     <ItemGroup>
         <PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="7.0.0" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="wwwroot\sounds\" />
+        <PackageReference Include="Plugin.Maui.Audio" Version="0.1.0-preview2" />
     </ItemGroup>
 
     <ItemGroup>
       <MauiIcon Include="Resources\AppIcon\icon.png" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <MauiAsset Update="Resources\Raw\brasil_sil_sil_2022.mp3">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </MauiAsset>
+      <MauiAsset Update="Resources\Raw\brasil_sil_sil_classico.mp3">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </MauiAsset>
+      <MauiAsset Update="Resources\Raw\e_tetra.mp3">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </MauiAsset>
+      <MauiAsset Update="Resources\Raw\hino_nacional.mp3">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </MauiAsset>
+      <MauiAsset Update="Resources\Raw\musica_do_hexa.mp3">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </MauiAsset>
+      <MauiAsset Update="Resources\Raw\olha_o_gol.mp3">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </MauiAsset>
+      <MauiAsset Update="Resources\Raw\olho_no_lance.mp3">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </MauiAsset>
+      <MauiAsset Update="Resources\Raw\vuvuzela_1.mp3">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </MauiAsset>
+      <MauiAsset Update="Resources\Raw\vuvuzela_2.mp3">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </MauiAsset>
+      <MauiAsset Update="Resources\Raw\vuvuzela_3.mp3">
+        <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      </MauiAsset>
     </ItemGroup>
 
 </Project>
